@@ -7,3 +7,4 @@ Project MMM in Python language
 4. Test_commands plik txt zawierający podstawowe przykładowe komendy testowe do obsługi generatora w main. Zawiera odwołania do testownik patrz niżej.
 5. testownik plik csv odpowiada za wyświetlanie, należy pamietać, że przesyłając dane do csv z Python float ma separator kropki, a Libreoffice przecinek warto skorzystać z ctrl+h. Następnie wstawić wykres.
 6. Dalsze zmiany obejmą dopracowanie projektu wiader, GUI i ewentualne zmiany genratora to jest wersja podstawowa
+7. :)
