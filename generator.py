@@ -58,7 +58,7 @@ class Generator:
         period_number = 1
 
         while square_wave_sample < len(time):
-            if square_wave_sample <= period_number * self.period * self.duty_cycle + (period_number - 1) * self.period * self.duty_cycle:
+            if square_wave_sample <= self.period * self.duty_cycle + (period_number - 1) * self.period:
                 square_wave.append(self.amplitude)
             else:
                 square_wave.append(0)
