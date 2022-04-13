@@ -1,31 +1,20 @@
 # ProjectMMM
 Project MMM in Python language 
 
-Założenia wstępne wersji nr.1
+Założenia wersji nr.2:
 
-1.1 Main to jedyny program wykonawczy na razie obsługuje wyłącznie testowanie działania generatora 
+1.1 Main to jedyny program wykonawczy na ten moment obsługuje generator oraz wywołanie operacji klasy buckets oraz zapis do pliku csv.
 
 1.2 Generator klasa zajmująca się generowaniem przebiegów sinusoidalnych, prostokątnych, pobudzenia jedynką heavyside'a. Została wykorzystana biblioteka numpy do generacji czasu i sinusa.
 
-1.3 Poniżej notatki koncepcyjne z tworzenia kodu dla fali prostokątnej:
+1.3 Errors klasa zajmująca się obsługą wyjątków dla klas generator oraz buckets, obsługuje wyłącznie błędy w podanych zmiennych. Nazwy funkcji mówią same za siebie.
 
-![Założenia kocecyjne 1](https://user-images.githubusercontent.com/83645103/161130352-936eeb16-f29d-4172-aa9a-e17feb0ef593.jpg)
-1.4 Poniżej notatki koncepcyjne z tworzenia kodu dla impulsu:
+1.4 Test_commands plik txt zawierający podstawowe przykładowe komendy testowe do obsługi generatora w main. Zawiera odwołania do testownik patrz niżej.
 
-![Założenia kocepcyjne 2](https://user-images.githubusercontent.com/83645103/161130372-8a7f9fc1-f285-4c7b-ab65-93de306381ea.jpg)
+1.5 testownik plik csv odpowiada za wyświetlanie, należy pamietać, że przesyłając dane do csv z Python float ma separator kropki, a Libreoffice przecinek warto skorzystać z ctrl+h. Następnie wstawić wykres. Jezeli korzystamy z notacji anglosaskiej problem ten nie powinien mieć miejsca, można ją ustawić wybierając opcje jak poniżej:
 
-1.5 Errors klasa zajmująca się obsługą wyjątków dla klasy Generator, obsługuje wyłącznie błędy w podanych zmiennych. Nazwy funkcji mówią same za siebie.
+![ustawienia_libreoffice](https://user-images.githubusercontent.com/83645103/163212759-e81f51ea-f3cb-4ec9-a1b4-e80d0e095275.jpg)
 
-1.6 Test_commands plik txt zawierający podstawowe przykładowe komendy testowe do obsługi generatora w main. Zawiera odwołania do testownik patrz niżej.
+1.6 Klasa Bucket znajdująca się w pliku buckets.py, z założenia symuluje działanie zbiorników cylindrycznych.
 
-1.7 testownik plik csv odpowiada za wyświetlanie, należy pamietać, że przesyłając dane do csv z Python float ma separator kropki, a Libreoffice przecinek warto skorzystać z ctrl+h. Następnie wstawić wykres.
-
-1.8 Dalsze zmiany obejmą dopracowanie projektu wiader, GUI i ewentualne zmiany genratora to jest wersja podstawowa
-
-
-Pierwsze poprawki do generatora, błąd geneacji fali prostokątnej został naprawiony
-
-2.1 Naprawiono błąd związany z generacją fali prostokątnej zmieniono jedną linię kodu, pliki jpg z rozpiską koncepcyjną i przykładem wykorzystania poniżej:
-
-![Problem generacji prostokąta 1](https://user-images.githubusercontent.com/83645103/161130039-5cb8942d-6980-450c-9863-067b0b72cd56.jpg)
-![Problem generacji prostokąta 2](https://user-images.githubusercontent.com/83645103/161130126-ba714f11-5b13-4612-9fb8-6ecbfbc32625.jpg)
+Szerszy opis działania podzespołów wersji nr.2. Dokładniej w tej sekcji zostanie opisany sposób działania klasy buckets, zostanie wsyjaśnione podstawowe nazewnictwo i sposób interpretacji oraz wyjasnienie aktualnego działania klasy main
