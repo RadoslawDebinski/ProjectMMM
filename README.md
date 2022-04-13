@@ -3,32 +3,32 @@ Project MMM in Python language
 
 1.Założenia wersji nr.2:
 
-1.1 Main to jedyny program wykonawczy na ten moment obsługuje generator oraz wywołanie operacji klasy buckets oraz zapis do pliku csv.
+1.1 Main, to jedyny program wykonawczy na ten moment obsługuje generator oraz wywołanie operacji klasy buckets oraz zapis do pliku csv.
 
-1.2 Generator klasa zajmująca się generowaniem przebiegów sinusoidalnych, prostokątnych, pobudzenia jedynką heavyside'a. Została wykorzystana biblioteka numpy do generacji czasu i sinusa.
+1.2 Generator, klasa zajmująca się generowaniem przebiegów sinusoidalnych, prostokątnych, pobudzenia jedynką heavyside'a. Została wykorzystana biblioteka numpy do generacji czasu i sinusa.
 
-1.3 Errors klasa zajmująca się obsługą wyjątków dla klas generator oraz buckets, obsługuje wyłącznie błędy w podanych zmiennych. Nazwy funkcji mówią same za siebie.
+1.3 Errors, klasa zajmująca się obsługą wyjątków dla klas generator oraz buckets, obsługuje wyłącznie błędy w podanych zmiennych. Nazwy funkcji mówią same za siebie.
 
-1.4 Test_commands plik txt zawierający podstawowe przykładowe komendy testowe do obsługi generatora w main. Zawiera odwołania do testownik patrz niżej.
+1.4 Test_commands, plik txt zawierający podstawowe przykładowe komendy testowe do obsługi generatora w main. Zawiera odwołania do testownik patrz niżej.
 
-1.5 testownik plik csv odpowiada za wyświetlanie, należy pamietać, że przesyłając dane do csv z Python float ma separator kropki, a Libreoffice przecinek warto skorzystać z ctrl+h. Następnie wstawić wykres. Jezeli korzystamy z notacji anglosaskiej problem ten nie powinien mieć miejsca, można ją ustawić wybierając opcje jak poniżej:
+1.5 testownik, plik csv odpowiada za wyświetlanie, należy pamietać, że przesyłając dane do csv z Python, float ma separator kropki, a Libreoffice przecinek, warto skorzystać z ctrl+h. Następnie wstawić wykres. Jezeli korzystamy z notacji anglosaskiej problem ten nie powinien mieć miejsca, można ją ustawić wybierając opcje jak poniżej:
 
 ![ustawienia_libreoffice](https://user-images.githubusercontent.com/83645103/163212759-e81f51ea-f3cb-4ec9-a1b4-e80d0e095275.jpg)
 
-1.6 Klasa Bucket znajdująca się w pliku buckets.py, z założenia symuluje działanie zbiorników cylindrycznych.
+1.6 Klasa Bucket, znajdująca się w pliku buckets.py, z założenia symuluje działanie zbiorników cylindrycznych.
 
 2. Szerszy opis działania podzespołów wersji nr.2. 
 
 Dokładniej w tej sekcji zostanie opisany sposób działania klasy Bucket, wyjaśnione podstawowe nazewnictwo i sposób interpretacji. Podobnie zostanie rozpisana teoria dla klasy Generator, której to zabrakło w poprzedniej wersji projektu oraz opiszemy działanie main.
 
-2.1 Klasa Bucket jak sama nazwa wskazuje odnosi się do tzw. wiadra roboczej nazwy zbiorników cylindrycznych, które symuluje, w trakcie tworzenia obiektu tej klasy podajemy jej podstawowe parametry:
+2.1 Klasa Bucket jak sama nazwa wskazuje odnosi się do tzw. wiadra roboczej nazwy zbiorników cylindrycznych, które symuluje, zastosowano numeryczną wersję metody Taylora dla rozwiązywania równań rożniczkowych. W trakcie tworzenia obiektu tej klasy podajemy jej podstawowe parametry:
 
 ![image](https://user-images.githubusercontent.com/83645103/163218336-d37eb81e-6415-4a14-852a-559da28911fe.png)
 
 data - strumień danych wejściowych. Podawanych jako kolejne wartości jednowymiarowej listy.
 tank_area - powierzchnia naszego zbiornika.
 outlet_area - powierzchnia zwężki wypływu (pot. otworu przez, który ucieka strumień).
-step - krok całkowania, predefiniowana wartość 0.01.
+step - krok obliczen, predefiniowana wartość 0.01.
 
 Po załadowaniu obiektu parametrami odnoszącymi się do przetwarzanych danych oraz jego wymiarów fizycznych, możemy wykorzystać jedyną funkcję czyli pour_water (pot. lej wodę) dokonuje ona symulacji obliczeń strumienia wejściowego i zwraca jako wartości liste dwuwymiarową gdzie pierwsza kolumna to wysokość wody dla danych chwil czasu, natomiast druga to strumień wypływający przez zwężkę. Poniżej kolejno założenia kocepcyjne implementacji tej funkcji oraz jej implementacja:
 
@@ -42,7 +42,7 @@ Po załadowaniu obiektu parametrami odnoszącymi się do przetwarzanych danych o
 ![image](https://user-images.githubusercontent.com/83645103/163225841-06687218-a0e9-453b-b898-8413a5b4153b.png)
 ![image](https://user-images.githubusercontent.com/83645103/163225880-8d6bdcad-2b17-45a4-865c-1363b49c214e.png)
 
-start_time - początkowy czas tworzenia przebiegu, niezbędny dla wygenerowania czasu w którym będziemy generować przebieg. 
+start_time - początkowy czas tworzenia przebiegu, niezbędny dla utworzenia czasu w którym będziemy generować przebieg. 
 end_time - końcowy czas, zatrzymanie generacji dla tej chwili czasu.
 frquency - częstotliwość generowanego przebiegu 
 amplitude - amplituda generowanego przebiegu 
@@ -56,7 +56,7 @@ t_on - czas rozpoczęscia się tzw. skoku w jedynce heavyside'a (dokładniej prz
 
 ![image](https://user-images.githubusercontent.com/83645103/163226858-15f90ca6-7ea3-48d1-8097-9c80006eb33b.png)
 
-2.3.2 Stworzenie trzech list (pot. wektorów, skąd nazwa vector) zawierających kolejne przebiegi z klasy Generator. Ważne są czasy podawane jako start i koniec danego przebiegu. Proszę zauważyć, że są one podawane jako 0 -> 40, 40 -> 80, 80 -> 120, to dlatego, iż każda z finkci generuje przebiegi od podanej chwili czasu do momentu poprzedzającego koniec przebiegu czyli 40, 80, 120. Wyjaśnienie takiego stanu rzeczy w dalszych podpunktach:
+2.3.2 Stworzenie trzech list (pot. wektorów, stąd nazwa vector) zawierających kolejne przebiegi z klasy Generator. Ważne są czasy podawane jako start i koniec danego przebiegu. Proszę zauważyć, że są one podawane jako 0 -> 40, 40 -> 80, 80 -> 120, to dlatego, iż każda z funkjci generuje przebiegi od podanej chwili czasu do momentu poprzedzającego koniec przebiegu czyli 40-(jednostka czasu), 80-(jednostka czasu), 120-(jednostka czasu). Wyjaśnienie takiego stanu rzeczy w dalszych podpunktach:
 
 ![image](https://user-images.githubusercontent.com/83645103/163227666-e6c028e4-f4f5-4bbd-b3a8-6075ad38f339.png)
 
