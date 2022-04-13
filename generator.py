@@ -2,24 +2,13 @@ import numpy as np
 import errors as er
 
 class Generator:
-    def __init__(self):
+    def __init__(self, sample_rate):
         self.__warning = er.Errors()
-
-    def time(self, start_time, end_time, frequency):
-        self.start_time = start_time
-        self.end_time = end_time
-        self.frequency = frequency
-        time_moment = 0
-        time = []
-        while time_moment < self.end_time:
-            time.append(start_time + time_moment * frequency)
-            time_moment += 1
-        return time
-
-    def gen_sin(self, start_time, end_time, sample_rate, frequency, amplitude):
-        self.start_time = start_time
-        self.end_time = end_time
         self.sample_rate = sample_rate
+
+    def gen_sin(self, start_time, end_time, frequency, amplitude):
+        self.start_time = start_time
+        self.end_time = end_time
         self.frequency = frequency
         self.amplitude = amplitude
 
@@ -33,13 +22,13 @@ class Generator:
 
         time = np.arange(self.start_time, self.end_time, 1 / self.sample_rate)
         sinewave = self.amplitude * np.sin(2 * np.pi * self.frequency * time)
-        sinewave += amplitude
+        sinewave += self.amplitude
         return (time, sinewave)
 
-    def gen_square_wave(self, start_time, end_time, sample_rate, period, duty_cycle, amplitude):
+
+    def gen_square_wave(self, start_time, end_time, period, duty_cycle, amplitude):
         self.start_time = start_time
         self.end_time = end_time
-        self.sample_rate = sample_rate
         self.period = period
         self.duty_cycle = duty_cycle
         self.amplitude = amplitude
@@ -68,10 +57,9 @@ class Generator:
 
         return (time, square_wave)
 
-    def gen_pulse(self, start_time, end_time, sample_rate, t_on, amplitude):
+    def gen_pulse(self, start_time, end_time, t_on, amplitude):
         self.start_time = start_time
         self.end_time = end_time
-        self.sample_rate = sample_rate
         self.t_on = t_on
         self.amplitude = amplitude
 
