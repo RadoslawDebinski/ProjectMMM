@@ -36,4 +36,38 @@ Po załadowaniu obiektu parametrami odnoszącymi się do przetwarzanych danych o
 
 ![image](https://user-images.githubusercontent.com/83645103/163220405-bc252d3e-2dc3-4b02-818c-117833f7bba3.png)
 
-2.2 
+2.2 Klasa Generator, jak sama nazwa wskazuje generuje za pomocą odpowiednich funkcji zadane sygnały. Przy tworzeniu obiektu tej kalasy jedyny parametr jaki zadajemy to ilość próbek na jednostkę czaasu (sample_rate). Nastepnie wywołujemy konkretną funkcje, każda z nich zwraca dwuwymiarową liste, gdzie pierwsza kolumna zawiera kolejne chwile czasu, a druga wartości sygnału dla chwil czasu. Poniżej opis parametrów kolejnych funkcji (typów generowanych przebiegów):
+
+![image](https://user-images.githubusercontent.com/83645103/163225293-0e2e382f-9e6f-41a2-91d1-fd9d596f9334.png)
+![image](https://user-images.githubusercontent.com/83645103/163225841-06687218-a0e9-453b-b898-8413a5b4153b.png)
+![image](https://user-images.githubusercontent.com/83645103/163225880-8d6bdcad-2b17-45a4-865c-1363b49c214e.png)
+
+start_time - początkowy czas tworzenia przebiegu, niezbędny dla wygenerowania czasu w którym będziemy generować przebieg. 
+end_time - końcowy czas, zatrzymanie generacji dla tej chwili czasu.
+frquency - częstotliwość generowanego przebiegu 
+amplitude - amplituda generowanego przebiegu 
+period - okres dla fali prostokątnej 
+duty_cycle - wspołczynnik wypełnienia fali prostokątenj podawany w procentach od 0 = 0%, do 1 = 100%.
+t_on - czas rozpoczęscia się tzw. skoku w jedynce heavyside'a (dokładniej przesuniętej jedyncje heavyside'a).
+
+2.3 W tej sekcji opiszemy sposób działania Main krok po korku:
+
+2.3.1 Stowrzenie obiektu klasy Genreator i zadanie mu paramteru sample_rate:
+
+![image](https://user-images.githubusercontent.com/83645103/163226858-15f90ca6-7ea3-48d1-8097-9c80006eb33b.png)
+
+2.3.2 Stworzenie trzech list (pot. wektorów, skąd nazwa vector) zawierających kolejne przebiegi z klasy Generator. Ważne są czasy podawane jako start i koniec danego przebiegu. Proszę zauważyć, że są one podawane jako 0 -> 40, 40 -> 80, 80 -> 120, to dlatego, iż każda z finkci generuje przebiegi od podanej chwili czasu do momentu poprzedzającego koniec przebiegu czyli 40, 80, 120. Wyjaśnienie takiego stanu rzeczy w dalszych podpunktach:
+
+![image](https://user-images.githubusercontent.com/83645103/163227666-e6c028e4-f4f5-4bbd-b3a8-6075ad38f339.png)
+
+2.3.3 Stworzenie listy zawierającej nasze przebiegi, stworzenie nowej dwuwymiarowej listy zwierającej tzw. stream, czyli końcowy strumień danych, który zostanie podany na obiekty klasy Bucket. Wcześniej wymieniona notacja pozwala nam na połącznie tych przebiegów, w jeden dłuższy testowy, co zostaje wykonane za pomocą dwóch obiekowych pętli typu for.
+
+![image](https://user-images.githubusercontent.com/83645103/163228155-67e3bde5-3516-42e1-ab98-ee6662a18832.png)
+
+2.3.4 Utowrzenie obiektów typu Bucket symulujących działanie układu dwóch zbiorników cylindrycznych oraz wywołanie dla nich funkcji dokonującej operacji matemtycznych:
+
+![image](https://user-images.githubusercontent.com/83645103/163228447-723638d0-1e6d-4357-9033-f80ee8808229.png)
+
+2.3.5 Wysłanie danych przetworzonych przez obiekty typu Bucket do pliku csv. Koleno od lewej do prawej: chwila czasu, wartość wejściowa strumienia, wysokość wody w pierwszym zbiorniku, wysokość wody w drugim zbiorniku:
+
+![image](https://user-images.githubusercontent.com/83645103/163228735-6563c645-6651-4683-aef0-6134341ed3ff.png)
