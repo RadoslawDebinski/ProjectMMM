@@ -1,7 +1,7 @@
 # ProjectMMM
 Project MMM in Python language 
 
-Założenia wersji nr.2:
+1.Założenia wersji nr.2:
 
 1.1 Main to jedyny program wykonawczy na ten moment obsługuje generator oraz wywołanie operacji klasy buckets oraz zapis do pliku csv.
 
@@ -17,4 +17,9 @@ Założenia wersji nr.2:
 
 1.6 Klasa Bucket znajdująca się w pliku buckets.py, z założenia symuluje działanie zbiorników cylindrycznych.
 
-Szerszy opis działania podzespołów wersji nr.2. Dokładniej w tej sekcji zostanie opisany sposób działania klasy buckets, zostanie wsyjaśnione podstawowe nazewnictwo i sposób interpretacji oraz wyjasnienie aktualnego działania klasy main
+2. Szerszy opis działania podzespołów wersji nr.2. Dokładniej w tej sekcji zostanie opisany sposób działania klasy Bucket, zostanie wsyjaśnione podstawowe nazewnictwo i sposób interpretacji oraz wyjasnienie aktualnego działania klasy main
+
+2.1 Klasa Bucket jak sama nazwa wskazuje odnosi się do tzw. wiadra roboczej nazwy zbiorników cylindrycznych, które symuluje, w trakcie tworzenia obiektu tej klasy podajemy jej podstawowe paramtry:
+
+
+
