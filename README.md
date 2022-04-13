@@ -64,7 +64,7 @@ t_on - czas rozpoczęscia się tzw. skoku w jedynce heavyside'a (dokładniej prz
 
 ![image](https://user-images.githubusercontent.com/83645103/163228155-67e3bde5-3516-42e1-ab98-ee6662a18832.png)
 
-2.3.4 Utowrzenie obiektów typu Bucket symulujących działanie układu dwóch zbiorników cylindrycznych oraz wywołanie dla nich funkcji dokonującej operacji matemtycznych:
+2.3.4 Utworzenie obiektów typu Bucket symulujących działanie układu dwóch zbiorników cylindrycznych oraz wywołanie dla nich funkcji dokonującej operacji matemtycznych:
 
 ![image](https://user-images.githubusercontent.com/83645103/163228447-723638d0-1e6d-4357-9033-f80ee8808229.png)
 
