@@ -17,9 +17,23 @@ Project MMM in Python language
 
 1.6 Klasa Bucket znajdująca się w pliku buckets.py, z założenia symuluje działanie zbiorników cylindrycznych.
 
-2. Szerszy opis działania podzespołów wersji nr.2. Dokładniej w tej sekcji zostanie opisany sposób działania klasy Bucket, zostanie wsyjaśnione podstawowe nazewnictwo i sposób interpretacji oraz wyjasnienie aktualnego działania klasy main
+2. Szerszy opis działania podzespołów wersji nr.2. 
 
-2.1 Klasa Bucket jak sama nazwa wskazuje odnosi się do tzw. wiadra roboczej nazwy zbiorników cylindrycznych, które symuluje, w trakcie tworzenia obiektu tej klasy podajemy jej podstawowe paramtry:
+Dokładniej w tej sekcji zostanie opisany sposób działania klasy Bucket, wyjaśnione podstawowe nazewnictwo i sposób interpretacji. Podobnie zostanie rozpisana teoria dla klasy Generator, której to zabrakło w poprzedniej wersji projektu oraz opiszemy działanie main.
 
+2.1 Klasa Bucket jak sama nazwa wskazuje odnosi się do tzw. wiadra roboczej nazwy zbiorników cylindrycznych, które symuluje, w trakcie tworzenia obiektu tej klasy podajemy jej podstawowe parametry:
 
+![image](https://user-images.githubusercontent.com/83645103/163218336-d37eb81e-6415-4a14-852a-559da28911fe.png)
 
+data - strumień danych wejściowych. Podawanych jako kolejne wartości jednowymiarowej listy.
+tank_area - powierzchnia naszego zbiornika.
+outlet_area - powierzchnia zwężki wypływu (pot. otworu przez, który ucieka strumień).
+step - krok całkowania, predefiniowana wartość 0.01.
+
+Po załadowaniu obiektu parametrami odnoszącymi się do przetwarzanych danych oraz jego wymiarów fizycznych, możemy wykorzystać jedyną funkcję czyli pour_water (pot. lej wodę) dokonuje ona symulacji obliczeń strumienia wejściowego i zwraca jako wartości liste dwuwymiarową gdzie pierwsza kolumna to wysokość wody dla danych chwil czasu, natomiast druga to strumień wypływający przez zwężkę. Poniżej kolejno założenia kocepcyjne implementacji tej funkcji oraz jej implementacja:
+
+![image](https://user-images.githubusercontent.com/83645103/163220282-6dbe0e7b-122d-4f98-b6da-e35f2ea85cce.png)
+
+![image](https://user-images.githubusercontent.com/83645103/163220405-bc252d3e-2dc3-4b02-818c-117833f7bba3.png)
+
+2.2 
