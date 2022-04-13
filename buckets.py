@@ -19,13 +19,13 @@ class Bucket:
         output = []
         height = []
         height.append(0)
-        param = self.outlet_area * np.sqrt(20) / self.tank_area
+        param = self.outlet_area * np.sqrt(20)
         for i in range(len(self.data)):
-            if (height[i] + self.step * (-param * np.sqrt(height[i]) + self.data[i] / self.tank_area)) < 0:
+            if (height[i] + self.step * (-param * np.sqrt(height[i]) + self.data[i]) / self.tank_area) < 0:
                 height.append(0)
                 output.append(0)
                 continue
-            height.append(height[i] + self.step * (-param * np.sqrt(height[i]) + self.data[i] / self.tank_area))
+            height.append(height[i] + self.step * (-param * np.sqrt(height[i]) + self.data[i]) / self.tank_area)
             output.append(self.step * (param * np.sqrt(height[i])))
             #print(f'{self.data[i]} {height[i]} {output[i]}')
         height.pop()
