@@ -1,0 +1,33 @@
+for moment, value in zip(vector[0], vector[1]):
+  print(f'{moment} {value}')
+
+
+plik = open("testownik.csv", "w")
+if plik.writable():
+    for moment, value in zip(vector[0], vector[1]):
+        plik.write(f'{moment},{value}' + '\n')
+
+plik.close()
+
+
+
+plik = open("testownik.csv", "w")
+if plik.writable():
+    for moment, value in zip(vector1[0], vector1[1]):
+        plik.write(f'{moment},{value}' + '\n')
+    for moment, value in zip(vector2[0], vector2[1]):
+        plik.write(f'{moment},{value}' + '\n')
+    for moment, value in zip(vector3[0], vector3[1]):
+        plik.write(f'{moment},{value}' + '\n')
+
+plik.close()
+
+
+for moment, value in zip(vector1[0], vector1[1]):
+  print(f'{moment} {value}' + '\n')
+
+for moment, value in zip(vector2[0], vector2[1]):
+  print(f'{moment} {value}' + '\n')
+
+for moment, value in zip(vector3[0], vector3[1]):
+  print(f'{moment} {value}' + '\n')
