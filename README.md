@@ -15,6 +15,8 @@ Project MMM in Python language
 
 ![ustawienia_libreoffice](https://user-images.githubusercontent.com/83645103/163212759-e81f51ea-f3cb-4ec9-a1b4-e80d0e095275.jpg)
 
+Zawiera podstawowo 2400 linii danych, wygenerowanych uprzednio przez program, które symulują przykładowe przebiegi. Parametry dla tej symulacji znajdują się w funkcji main. 
+
 1.6 Klasa Bucket, znajdująca się w pliku buckets.py, z założenia symuluje działanie zbiorników cylindrycznych.
 
 2. Szerszy opis działania podzespołów wersji nr.2. 
