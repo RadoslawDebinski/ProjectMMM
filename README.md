@@ -73,3 +73,12 @@ t_on - czas rozpoczęscia się tzw. skoku w jedynce heavyside'a (dokładniej prz
 2.3.5 Wysłanie danych przetworzonych przez obiekty typu Bucket do pliku csv. Koleno od lewej do prawej: chwila czasu, wartość wejściowa strumienia, wysokość wody w pierwszym zbiorniku, wysokość wody w drugim zbiorniku:
 
 ![image](https://user-images.githubusercontent.com/83645103/163228735-6563c645-6651-4683-aef0-6134341ed3ff.png)
+
+3. Sekcja blędów poprawionych w wersji 2 projektu:
+
+3.1 Błąd w zaimplementowanej formule matematycznej, strumień wysyłany z zbiornika pierwszego do drugiego był arbitralnie podzielny przez powierzchnię pierwszego zbiornika. Powodem było błędne przeniesienie teoretycznego projektu funkcji na jej odpowiednik w kodzie. Poniżej porównanie przebiegów przed i po. Żółty to przebieg wysokości wody w pierwszym zbiorniku, a zielony w drugim: 
+
+![Podgląd2](https://user-images.githubusercontent.com/83645103/163247511-22e24c2b-9240-48e4-94b7-943274689610.jpg)
+
+![Podgląd2 2](https://user-images.githubusercontent.com/83645103/163247535-73b65b8b-5f2d-4f08-b7fc-c79db63854d3.jpg)
+
