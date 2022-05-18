@@ -74,11 +74,37 @@ t_on - czas rozpoczęscia się tzw. skoku w jedynce heavyside'a (dokładniej prz
 
 ![image](https://user-images.githubusercontent.com/83645103/163228735-6563c645-6651-4683-aef0-6134341ed3ff.png)
 
-3. Sekcja blędów poprawionych w wersji 2 projektu:
+3. Sekcja aktualizacji i naprawionych błędów poprawionych w wersji 2 projektu (aktualizacje tej wersji nie zmiany pomiędzy obecną, a poprzednią):
 
 3.1 Błąd w zaimplementowanej formule matematycznej, strumień wysyłany z zbiornika pierwszego do drugiego był arbitralnie podzielny przez powierzchnię pierwszego zbiornika. Powodem było błędne przeniesienie teoretycznego projektu funkcji na jej odpowiednik w kodzie. Poniżej porównanie przebiegów przed i po. Żółty to przebieg wysokości wody w pierwszym zbiorniku, a zielony w drugim: 
 
 ![Podgląd2](https://user-images.githubusercontent.com/83645103/163247511-22e24c2b-9240-48e4-94b7-943274689610.jpg)
 
 ![Podgląd2 2](https://user-images.githubusercontent.com/83645103/163247535-73b65b8b-5f2d-4f08-b7fc-c79db63854d3.jpg)
+
+3.2 Błąd w interpretacji metody Taylora. Częstostliwość próbkowania powinna być odwrotnie proporcjonalna do kroku całkowania, aby zachować spójność logiczną. Parametry zadawane w main.py: sample_rate i period są teraz podawane po podzieleniu przez krok całkowania (h). Dodatkowo parametr ten jest wykorzystywany od teraz jako normalna wartość wejściowa w pliku main.py do funkcji obiektów klasy buckets (wcześniej parametr domyślny). Wizualzacja pracy programu przy zadanych parametrach po naprawieniu usterki:
+
+Wprowadzone dane:
+
+![Zrzut ekranu 2022-05-18 160119](https://user-images.githubusercontent.com/83645103/169064722-9702e9b8-6621-4d36-85d4-9a6b3a2ab0c8.jpg)
+![Zrzut ekranu 2022-05-18 162235xxxxx](https://user-images.githubusercontent.com/83645103/169064769-99f3443a-41e1-4e2b-b490-c780bf93bdaf.jpg)
+
+Wyniki dla kolejnych kroków całkowania (czerwony - sygnał wejściowy, zielony - wysokość wody w drugim zbiorniku, żółty - zbliżenie na wysokość wody w pierwszym zbiorniku):
+
+Krok wynoszący 0,1:
+
+![0,1(0)](https://user-images.githubusercontent.com/83645103/169065494-8168e80c-d25a-4225-b50e-5499c2ec5aec.jpg)
+![0,1(1)](https://user-images.githubusercontent.com/83645103/169065523-e0bac5ec-0c7b-45af-a4d2-2421cf8d2b10.jpg)
+
+Krok wynoszący 0,01:
+
+![0,01(0)](https://user-images.githubusercontent.com/83645103/169065632-c3acccda-b71b-4740-839d-e013a3104453.jpg)
+![0,01(1)](https://user-images.githubusercontent.com/83645103/169065658-7c3034c7-d754-461f-b0f6-44d2a7dfaae7.jpg)
+
+Krok wynoszący 0,001:
+
+![0,001(0)](https://user-images.githubusercontent.com/83645103/169066287-3aee632e-3216-4f4b-857e-c836984d2c4a.jpg)
+![0,001(1)](https://user-images.githubusercontent.com/83645103/169066311-235816e7-9982-4756-9ed2-4a7197d7c0b4.jpg)
+
+
 
