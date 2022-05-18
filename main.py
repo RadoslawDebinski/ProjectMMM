@@ -4,13 +4,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 import errors as er
 
-generator = Generator(20)
+h = 0.001
 
-vector1 = generator.gen_sin(0, 40, 1, 1)
-vector2 = generator.gen_square_wave(40, 80, 20, 0.15, 2)
-vector3 = generator.gen_pulse(80, 120, 85, 2)
+generator = Generator(1/h)
 
-vector_table = [vector1, vector2, vector3]
+vector1 = generator.gen_sin(20, 40, 0.5, 1)
+vector2 = generator.gen_square_wave(40, 60, 3/h, 0.7, 2)
+vector3 = generator.gen_pulse(0, 20, 10, 2)
+
+vector_table = [vector3, vector1, vector2]
 
 stream = [[], []]
 
@@ -20,9 +22,9 @@ for next_vector in vector_table:
         stream[1].append(value)
 
 
-bucket1 = Bucket(stream[1], 2, 1)
+bucket1 = Bucket(stream[1], 2, 1, h)
 outlet1 = bucket1.pour_water()
-bucket2 = Bucket(outlet1[1], 0.1, 0.01)
+bucket2 = Bucket(outlet1[1], 1, 0.1, h)
 outlet2 = bucket2.pour_water()
 
 plik = open("testownik.csv", "w")

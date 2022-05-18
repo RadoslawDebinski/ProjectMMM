@@ -26,7 +26,7 @@ class Bucket:
                 output.append(0)
                 continue
             height.append(height[i] + self.step * (-param * np.sqrt(height[i]) + self.data[i]) / self.tank_area)
-            output.append(self.step * (param * np.sqrt(height[i])))
+            output.append(param * np.sqrt(height[i]))
             #print(f'{self.data[i]} {height[i]} {output[i]}')
         height.pop()
 
