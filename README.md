@@ -37,6 +37,7 @@ Po załadowaniu obiektu parametrami odnoszącymi się do przetwarzanych danych o
 ![image](https://user-images.githubusercontent.com/83645103/163220282-6dbe0e7b-122d-4f98-b6da-e35f2ea85cce.png)
 
 ![image](https://user-images.githubusercontent.com/83645103/163220405-bc252d3e-2dc3-4b02-818c-117833f7bba3.png)
+(nastąpiły zmiany związane z błedami w implementacji, poprawny kod jest już dostepny w plikach, szersze objaśnienie w sekcji błedów)
 
 2.2 Klasa Generator, jak sama nazwa wskazuje generuje za pomocą odpowiednich funkcji zadane sygnały. Przy tworzeniu obiektu tej kalasy jedyny parametr jaki zadajemy to ilość próbek na jednostkę czaasu (sample_rate). Nastepnie wywołujemy konkretną funkcje, każda z nich zwraca dwuwymiarową liste, gdzie pierwsza kolumna zawiera kolejne chwile czasu, a druga wartości sygnału dla chwil czasu. Poniżej opis parametrów kolejnych funkcji (typów generowanych przebiegów):
 
