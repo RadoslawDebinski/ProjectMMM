@@ -1,19 +1,39 @@
 from generator import Generator
+from buckets import Bucket
 import numpy as np
 import matplotlib.pyplot as plt
 import errors as er
 
-generator = Generator()
+h = 0.001
 
-vector1 = generator.gen_sin(0, 10, 20, 1, 2)
-vector2 = generator.gen_square_wave(10, 20, 20, 10, 0.5, 2)
-vector3 = generator.gen_pulse(20, 30, 20, 27, 2)
+generator = Generator(1/h)
 
-for moment, value in zip(vector1[0], vector1[1]):
-  print(f'{moment} {value}' + '\n')
+vector1 = generator.gen_sin(20, 40, 0.5, 1)
+vector2 = generator.gen_square_wave(40, 60, 3/h, 0.7, 2)
+vector3 = generator.gen_pulse(0, 20, 10, 2)
 
-for moment, value in zip(vector2[0], vector2[1]):
-  print(f'{moment} {value}' + '\n')
+vector_table = [vector3, vector1, vector2]
 
-for moment, value in zip(vector3[0], vector3[1]):
-  print(f'{moment} {value}' + '\n')
+stream = [[], []]
+
+for next_vector in vector_table:
+    for moment, value in zip(next_vector[0], next_vector[1]):
+        stream[0].append(moment)
+        stream[1].append(value)
+
+
+bucket1 = Bucket(stream[1], 2, 1, h)
+outlet1 = bucket1.pour_water()
+bucket2 = Bucket(outlet1[1], 1, 0.1, h)
+outlet2 = bucket2.pour_water()
+
+plik = open("testownik.csv", "w")
+if plik.writable():
+    for moment, input_value, height1, height2 in zip(stream[0], stream[1], outlet1[0], outlet2[0]):
+        plik.write(f'{moment},{input_value},{height1},{height2}' + '\n')
+
+plik.close()
+
+
+
+
