@@ -1,0 +1,55 @@
+for moment, value in zip(vector[0], vector[1]):
+  print(f'{moment} {value}')
+
+
+plik = open("testownik.csv", "w")
+if plik.writable():
+    for moment, value in zip(vector[0], vector[1]):
+        plik.write(f'{moment},{value}' + '\n')
+
+plik.close()
+
+
+
+plik = open("testownik.csv", "w")
+if plik.writable():
+    for moment, value in zip(vector1[0], vector1[1]):
+        plik.write(f'{moment},{value}' + '\n')
+    for moment, value in zip(vector2[0], vector2[1]):
+        plik.write(f'{moment},{value}' + '\n')
+    for moment, value in zip(vector3[0], vector3[1]):
+        plik.write(f'{moment},{value}' + '\n')
+
+plik.close()
+
+
+for moment, value in zip(vector1[0], vector1[1]):
+  print(f'{moment} {value}' + '\n')
+
+for moment, value in zip(vector2[0], vector2[1]):
+  print(f'{moment} {value}' + '\n')
+
+for moment, value in zip(vector3[0], vector3[1]):
+  print(f'{moment} {value}' + '\n')
+
+
+
+vector_table = [vector1, vector2, vector3]
+
+vector = [[], []]
+
+for next_vector in vector_table:
+    for moment, value in zip(next_vector[0], next_vector[1]):
+        vector[0].append(moment)
+        vector[1].append(value)
+
+bucket1 = Bucket(vector[1], 2, 0.5)
+outlet1 = bucket1.pour_water()
+bucket2 = Bucket(bucket1[1], 2, 0.5)
+
+plik = open("testownik.csv", "w")
+if plik.writable():
+    for moment, height1, height2 in zip(vector[0], bucket1[0], bucket2[0]):
+        plik.write(f'{moment},{height1},{height2}' + '\n')
+
+plik.close()
